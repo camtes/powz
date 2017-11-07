@@ -4,6 +4,10 @@ import { View, Text, StyleSheet } from 'react-native';
 
 // create a component
 class SlidesScreen extends Component {
+  static navigationOptions = {
+    header: null,
+  };
+  
   render() {
     return (
       <View style={styles.container}>
