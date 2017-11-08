@@ -4,6 +4,8 @@ import { View, Text, StyleSheet } from 'react-native';
 
 // create a component
 class SingleScreen extends Component {
+  
+
   render() {
     return (
       <View style={styles.container}>

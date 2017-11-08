@@ -1,14 +1,13 @@
 import React from 'react';
+import { View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-
+import Expo from 'expo'
 import Splash from '../screens/SplashScreen'
-import Slides from '../screens/SlidesScreen'
 import MainTabNavigator from './MainTabNavigator'
 
 const RootStackNavigator = StackNavigator(
   {
     Splash: { screen: Splash },
-    Slides: { screen: Slides },
     Main: { screen: MainTabNavigator }
   },
   {

@@ -21,32 +21,33 @@ export default TabNavigator(
 
         switch (routeName) {
           case 'Home':
-            iconName = 
-              Platform.OS === 'ios'
-                ? `ios-flash${focused ? '' : '-outline'}`
-                : 'md-flash';
+            Platform.OS === 'ios'
+              ? iconName = `ios-flash${focused ? '' : '-outline'}`
+              : iconName = null
             break;
           case 'History':
-            iconName =
-              Platform.OS === 'ios'
-                ? `ios-flash${focused ? '' : '-outline'}`
-                : 'md-list'
+            Platform.OS === 'ios'
+              ? iconName = `ios-list-box${focused ? '' : '-outline'}`
+              : iconName = null
             break;
         }
 
         return (
           <Ionicons
             name={iconName}
-            size={28}
-            style={{ marginBottom: -3 }}
+            size={32}
+            style={{ marginTop: 6 }}
             color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
           />
         )
       }
     }),
     tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom',
     animationEnabled: false,
     swipeEnabled: false,
+    tabBarOptions: {
+      activeTintColor: 'gray',
+      inactiveTintColor: 'gray',
+    }
   }
 )
