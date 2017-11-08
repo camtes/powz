@@ -24,7 +24,6 @@ class SplashScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar barStyle='dark-content' backgroundColor={Colors.tintColor} />
         <Image
           source={require('./../../assets/logo.png')}
           style={{width: 160}}
