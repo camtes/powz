@@ -10,7 +10,7 @@ import MainTabNavigator from './MainTabNavigator'
 const RootStackNavigator = StackNavigator(
   {
     Splash: { screen: Splash },
-    Main: { screen: HomeScreen }
+    Main: { screen: MainTabNavigator }
   },
   {
     navigationOptions: () => ({

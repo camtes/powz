@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { FlatList, Dimensions, TouchableOpacity, TextInput, StatusBar, View, Image, Text, StyleSheet } from 'react-native';
+import { Animated, Dimensions, TouchableOpacity, TextInput, StatusBar, View, Image, Text, StyleSheet } from 'react-native';
 import Colors from './../constants/Colors'
 
 const titlestyle = {color: 'green', fontSize: 13}
@@ -17,39 +17,103 @@ class HomeScreen extends Component {
     }
   }
 
-  renderSeparator = () => {
-    return (
-      <View
-        style={{
-          height: 1,
-          width: "86%",
-          backgroundColor: "red",
-          marginLeft: "14%"
-        }}
-      />
-    );
-  };
+  state = {
+    z1: new Animated.Value(0),
+    z2: new Animated.Value(0),
+    z3: new Animated.Value(0),
+    z4: new Animated.Value(0),
+    z5: new Animated.Value(0)
+  }
+
+  componentDidMount() {
+    Animated.timing( this.state.z1, { toValue: 100, duration: 4000 }).start()
+  }
+  //   Animated.timing(                  // Animate over time
+  //     this.state.z1,            // The animated value to drive
+  //     {
+  //       toValue: 100,                   // Animate to opacity: 1 (opaque)
+  //       duration: 5000,              // Make it take a while
+  //     }
+  //   ).start();
+
+  //   Animated.timing(                  // Animate over time
+  //     this.state.z2,            // The animated value to drive
+  //     {
+  //       toValue: 147,                   // Animate to opacity: 1 (opaque)
+  //       duration: 5000,              // Make it take a while
+  //     }
+  //   ).start();
+
+  //   Animated.timing(                  // Animate over time
+  //     this.state.z3,            // The animated value to drive
+  //     {
+  //       toValue: 168,                   // Animate to opacity: 1 (opaque)
+  //       duration: 5000,              // Make it take a while
+  //     }
+  //   ).start();
+
+  //   Animated.timing(                  // Animate over time
+  //     this.state.z4,            // The animated value to drive
+  //     {
+  //       toValue: 178,                   // Animate to opacity: 1 (opaque)
+  //       duration: 5000,              // Make it take a while
+  //     }
+  //   ).start();
+
+  //   Animated.timing(                  // Animate over time
+  //     this.state.z5,            // The animated value to drive
+  //     {
+  //       toValue: 185,                   // Animate to opacity: 1 (opaque)
+  //       duration: 5000,              // Make it take a while
+  //     }
+  //   ).start();
+  // }
 
   render() {
+    let circle = screen.width - 140
+
+    let height = this.state.z1
     return (
       <View style={styles.container}>
-        <TextInput style={styles.textInput} placeholder={'Average BPM'} />
-        <TouchableOpacity activeOpacity={0.8}>
-          <View style={styles.button}>
-            <Image
-              source={require('./../../assets/zap.png')}
-              style={{ width: 50, height: 40 }}
-              resizeMode={'contain'}
-            />
-            <Text style={{color: 'white', fontWeight: '500', fontSize: 18}}>CALCULATE</Text>
-          </View>
-        </TouchableOpacity>
-        <Text style={{fontSize: 18, color: '#afafaf', fontWeight: '600', marginTop: 16, textAlign: 'center', padding: 16, width: screen.width, backgroundColor: '#f0f0f0', borderTopWidth: 1, borderBottomWidth: 1, borderTopColor: '#0e0e0e'}}>HISTORY</Text>
-        <FlatList
-          style={{backgroundColor: '#f0f0f0'}}
-          data={[{ key: '9 Noviembre, 2017' }, { key: '9 Octubre, 2017' }]}
-          renderItem={({ item }) => <View style={{marginLeft: 16, padding: 16, paddingLeft: 8, width: screen.width, marginBottom: 10, borderBottomWidth: 1, borderColor: '#a8a8a8'}}><Text style={{fontWeight: '500', color: '#0e0e0e'}}>{item.key}</Text></View>}
-        />
+        <View style={{marginTop: 32, marginBottom: 16, flexDirection: 'row', paddingBottom: 35, justifyContent: 'center', alignItems: 'flex-end', backgroundColor: 'white', width: circle, height: circle, borderRadius: circle / 2}}>
+          <View style={{backgroundColor: Colors.z1, width: circle / 5 - 25, height: 50}} />
+          <View style={{backgroundColor: Colors.z2, width: circle / 5 - 25, height: 75}} />
+          <View style={{backgroundColor: Colors.z3, width: circle / 5 - 25, height: 100}} />
+          <View style={{backgroundColor: Colors.z4, width: circle / 5 - 25, height: 125}} />
+          <View style={{backgroundColor: Colors.z5, width: circle / 5 - 25, height: 150}} />
+        </View>
+        
+        <Text style={styles.title}>ZONES</Text>
+
+        <View style={styles.zones}>
+          <Text style={styles.zonesBold}>Z1</Text>
+            <Text style={styles.zonesValue}>100 <Text style={styles.zonesDesc}>bpm</Text>
+          </Text>
+        </View>
+        
+        <View style={styles.zones}>
+          <Text style={styles.zonesBold}>Z2</Text>
+            <Text style={styles.zonesValue}>147 <Text style={styles.zonesDesc}>bpm</Text>
+          </Text>
+        </View>
+        
+        <View style={styles.zones}>
+          <Text style={styles.zonesBold}>Z3</Text>
+            <Text style={styles.zonesValue}>168 <Text style={styles.zonesDesc}>bpm</Text>
+          </Text>
+        </View>
+        
+        <View style={styles.zones}>
+          <Text style={styles.zonesBold}>Z4</Text>
+            <Text style={styles.zonesValue}>174 <Text style={styles.zonesDesc}>bpm</Text>
+          </Text>
+        </View>
+        
+        <View style={styles.zones}>
+          <Text style={styles.zonesBold}>Z5</Text>
+            <Text style={styles.zonesValue}>187 <Text style={styles.zonesDesc}>bpm</Text>
+          </Text>
+        </View>
       </View>
     );
   }
@@ -60,28 +124,41 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: Colors.background,
   },
 
-  textInput: {
-    marginTop: 32, 
-    textAlign: 'center', 
-    borderBottomColor: '#ECECEC', 
-    borderBottomWidth: 1, 
+  title: {
+    margin: 16,
+    fontSize: 21,
+    fontWeight: '300',
+    color: '#bbb'
+  },
+
+  zones: {
+    flexDirection: 'row',
+    padding: 8,
+    paddingLeft: 32,
+    paddingRight: 32,
+    width: screen.width,
+    justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+    alignItems: 'center'
+  },
+  
+  zonesBold: {
+    fontWeight: '600',
+    color: '#555555'
+  },
+
+  zonesValue: {
     fontSize: 18
   },
 
-  button: {
-    marginTop: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    paddingRight: 16,
-    paddingLeft: 8,
-    height: 60,
-    backgroundColor: Colors.tintColor,
-    borderRadius: 10
-  },
+  zonesDesc: {
+    fontSize: 15,
+    color: '#888888'
+  }
 
 });
 

@@ -1,14 +1,20 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Image, View, Text, StyleSheet } from 'react-native';
+import Colors from './../constants/Colors'
+
 const titlestyle = { color: 'green', fontSize: 13 }
 
 // create a component
 class HistoryScreen extends Component {
   static navigationOptions = {
+    headerTitle: <Image source={require('./../../assets/powz.png')} style={{height: 20, width: 90}} resizeMode={'contain'} />,
     title: 'History',
-    headerTitle: 'HISTORY',
-    titleStyle: titlestyle
+    titleStyle: {color: 'white'},
+    headerStyle: {
+      backgroundColor: Colors.tintColor,
+      borderWidth: 0
+    }
   }
 
   render() {
