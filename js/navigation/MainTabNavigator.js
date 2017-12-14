@@ -6,14 +6,12 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Colors from './../constants/Colors'
 
 import HomeScreen from './../screens/HomeScreen'
-import CalculatorScreen from './../screens/CalculatorScreen'
 import HistoryScreen from './../screens/HistoryScreen'
 
 export default TabNavigator(
   {
     Home: { screen: HomeScreen },
-    Calculator: { screen: CalculatorScreen },
-    History: { screen: HistoryScreen }
+    // History: { screen: HistoryScreen }
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -25,12 +23,12 @@ export default TabNavigator(
           case 'Home':
             Platform.OS === 'ios'
               ? iconName = `ios-flash${focused ? '' : '-outline'}`
-              : iconName = null
+              : iconName = 'md-flash'
             break;
           case 'Calculator':
             Platform.OS === 'ios'
               ? iconName = `ios-calculator${focused ? '' : '-outline'}`
-              : iconName = null
+              : iconName = 'md-calculator'
             break;
           case 'History':
             Platform.OS === 'ios'
@@ -49,6 +47,7 @@ export default TabNavigator(
         )
       }
     }),
+    tabBarPosition: 'bottom',
     tabBarComponent: TabBarBottom,
     animationEnabled: false,
     swipeEnabled: false,

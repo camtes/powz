@@ -12,8 +12,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle='light-content' backgroundColor={Colors.tintColor} />}
-        {Platform.OS === 'android' && <StatusBar barStyle="dark-content" backgroundColor="#f3f3f3" />}
+        <StatusBar barStyle='light-content' backgroundColor={Colors.tintColor} />
         <RootNavigation />
       </View>
     );

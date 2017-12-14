@@ -12,4 +12,5 @@ export default {
   z3: '#d79729',
   z4: '#d3552c',
   z5: '#c72639',
+  textColor: 'rgba(0,0,0,0.8)'
 }

@@ -5,12 +5,14 @@ import Expo from 'expo'
 
 import Splash from '../screens/SplashScreen'
 import HomeScreen from '../screens/HomeScreen'
+import InfoScreen from '../screens/InfoScreen'
 import MainTabNavigator from './MainTabNavigator'
 
 const RootStackNavigator = StackNavigator(
   {
     Splash: { screen: Splash },
-    Main: { screen: MainTabNavigator }
+    Main: { screen: HomeScreen },
+    InfoScreen: { screen: InfoScreen }
   },
   {
     navigationOptions: () => ({
